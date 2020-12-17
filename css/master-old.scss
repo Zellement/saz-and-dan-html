@@ -1,0 +1,196 @@
+
+@import "_reset";
+
+$mainbeige : #f1ecec;
+$primarycolor: #a28178;
+
+// Media Queries
+
+$tablet-width   : 480px;
+$desktop-width  : 800px;
+$medium-width   : 1000px;
+$large-width    : 1200px;
+$full-width     : 1600px;
+
+@mixin bp480 {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin bp800 {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin bp1000 {
+  @media (min-width: #{$medium-width}) {
+    @content;
+  }
+}
+
+@mixin bp1200 {
+  @media (min-width: #{$large-width}) {
+    @content;
+  }
+}
+
+@mixin bp1600 {
+  @media (min-width: #{$full-width}) {
+    @content;
+  }
+}
+
+@font-face {
+    font-family: 'GhostLight';
+    src: url('../fonts/ghostlight-semilightitalic-webfont.woff2') format('woff2'),
+         url('../fonts/ghostlight-semilightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	text-transform: lowercase;
+	margin: 0;
+}
+
+* { margin: 0; padding: 0; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+body {
+	background-color: $mainbeige;
+	font-family: serif;
+	color: $primarycolor;
+	font-size: 62.5%;
+}
+
+.bodybg {
+	background-image: url(../img/bodybg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: -10;
+	background-position: center;
+}
+
+.leaves {
+	position: fixed;
+	z-index: -1;
+}
+
+$leavessize: 80px;
+
+.leaves-top {
+	top: 0;
+	right: 0;
+	left: 0;
+	height: $leavessize;
+	width: 100%;
+	background-image: url(../img/leaves-top.png);
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+
+.leaves-bottom {
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: $leavessize;
+	width: 100%;
+	background-image: url(../img/leaves-bottom.png);
+	background-position: top left;
+	background-repeat: repeat-x;
+}
+
+.leaves-right {
+	bottom: 0;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: $leavessize;
+	background-image: url(../img/leaves-right.png);
+	background-position: top left;
+	background-repeat: repeat-y;
+}
+
+.leaves-left {
+	bottom: 0;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: $leavessize;
+	background-image: url(../img/leaves-left.png);
+	background-position: top right;
+	background-repeat: repeat-y;
+}
+
+@include bp800 {
+
+	$leavessize: 100px;
+
+	.leaves-top {
+		height: $leavessize;
+	}
+	.leaves-bottom {
+		height: $leavessize;
+	}
+	.leaves-right {
+		width: $leavessize;
+	}
+	.leaves-left {
+		width: $leavessize;
+	}
+}
+
+@include bp1200 {
+
+	$leavessize: 120px;
+
+	.leaves-top {
+		height: $leavessize;
+	}
+	.leaves-bottom {
+		height: $leavessize;
+	}
+	.leaves-right {
+		width: $leavessize;
+	}
+	.leaves-left {
+		width: $leavessize;
+	}
+}
+
+.intro {
+    font-family: 'GhostLight';
+    font-size: 50px;
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 2rem 1rem;
+    height: 100vh;
+    display:flex;
+    div {
+    	display: flex;
+    	flex-direction: column;
+    	margin: auto;
+    }
+}
+
+svg {
+	max-width: 200px;
+	width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+
+@import 'animate';

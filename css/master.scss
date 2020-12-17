@@ -1,0 +1,595 @@
+@import "_reset";
+
+$blanc 			: #fff;
+$noir			: #000;
+$mainbeige 		: #f1ecec;
+$primarycolor	: #a28178;
+
+$babyblue		: #b3d5e0;
+$palegreen 		: #b7c7a7;
+
+// Media Queries
+
+$tablet-width   : 480px;
+$mad-width   :530px;
+$desktop-width  : 800px;
+$medium-width   : 1000px;
+$large-width    : 1200px;
+$full-width     : 1600px;
+
+@mixin bp480 {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin bp530 {
+  @media (min-width: #{$mad-width}) {
+    @content;
+  }
+}
+
+@mixin bp800 {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin bp1000 {
+  @media (min-width: #{$medium-width}) {
+    @content;
+  }
+}
+
+@mixin bp1200 {
+  @media (min-width: #{$large-width}) {
+    @content;
+  }
+}
+
+@mixin bp1600 {
+  @media (min-width: #{$full-width}) {
+    @content;
+  }
+}
+
+@-webkit-keyframes swinginone1{
+    0%{-webkit-transform: rotate(10deg);}
+    50%{-webkit-transform: rotate(-10deg)}
+    100%{-webkit-transform: rotate(10deg);}
+}
+ 
+@keyframes swingingone{
+    0%{transform: rotate(10deg);}
+    50%{transform: rotate(10deg)}
+    100%{transform: rotate(10deg);}
+}
+
+@-webkit-keyframes swingingtwo{
+    0%{-webkit-transform: rotate(3deg);}
+    50%{-webkit-transform: rotate(20deg)}
+    100%{-webkit-transform: rotate(3deg);}
+}
+ 
+@keyframes swingingtwo{
+    0%{transform: rotate(3deg);}
+    50%{transform: rotate(20deg)}
+    100%{transform: rotate(3deg);}
+}
+
+@font-face {
+    font-family: 'GhostLight';
+    src: url('../fonts/ghostlight-semilightitalic-webfont.woff2') format('woff2'),
+         url('../fonts/ghostlight-semilightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	text-transform: lowercase;
+	margin: 0;
+	font-family: 'GhostLight', serif;
+}
+
+h1 {
+	line-height: 1em;
+	margin: 0 0 .5em 0;
+}
+
+* { margin: 0; padding: 0; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+body {
+	background-color: $mainbeige;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: $primarycolor;
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+}
+
+.btn {
+	display: inline-block;
+	border: 3px solid darken($mainbeige,40);
+	padding: .5em .8em;
+	margin: 1em 0 .5em 0;
+	color: darken($mainbeige,40);
+	text-decoration: none;
+	transition: .3s;
+	text-transform: lowercase;
+	font-family: 'GhostLight', serif;
+	&:hover {
+		border-color: $noir;
+		color: $noir;
+	}
+	&.btn-blanc {
+		border-color: $blanc;
+		color: $blanc;
+	}
+}
+
+/* -----------------------------------------------------
+
+Internal
+
+----------------------------------------------------- */
+
+body.internal {
+}
+
+header.internal-header {
+	background-image: url('../img/body-mobile.jpg');
+	background-position: top center;
+	min-height: 100vh;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 100vh;
+	position: relative;
+
+	.content {
+		margin: auto;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		span {
+			font-size: 1.6rem;
+			text-transform: lowercase;
+			font-family: 'GhostLight', serif;
+			margin: 1em 0;
+			display: block;
+			animation-delay: 1.8s;
+			animation-duration: 3s;
+ 			animation-fill-mode: both;
+  			animation-name: fadeIn;
+		}
+		@include bp800 {
+			flex-direction: row;
+			span {
+				font-size: 2rem;
+			}
+			.logo {
+				margin: 0 2em;
+			}
+		}
+		@include bp1200 {
+			span {
+				white-space: nowrap;
+				display: flex;
+				margin: auto;
+				font-size: 2.2rem;
+				width: 300px;
+			}
+		}
+	}
+
+	.logo {
+		width: 100%;
+		max-width: 200px;
+		display: block;
+		margin: 0 auto;
+		animation-delay: .8s;
+		-moz-animation-delay: .8s;
+		-webkit-animation-delay: .8s;
+		-ms-animation-delay: .8s;
+		animation-duration: 3s;
+		-moz-animation-duration: 3s;
+		-webkit-animation-duration: 3s;
+		-ms-animation-duration: 3s;
+	}
+	@include bp800 {
+		background-image: url('../img/body-800.jpg');
+	}
+	@include bp1200 {
+	}
+}
+
+@include bp800 {
+	.scroll-downs {
+		position: absolute;
+		right: 0;
+		bottom: 100px;
+		left: 0;
+		z-index: 100;
+		margin: auto;
+		width :34px;
+		height: 55px;
+		animation-delay: 3s;
+		animation-duration: 1s;
+		animation-fill-mode: both;
+		animation-name: fadeIn;
+	}
+	.mousey {
+		width: 3px;
+		padding: 10px 15px;
+		height: 35px;
+		border: 2px solid $primarycolor;
+		border-radius: 25px;
+		opacity: 0.75;
+		box-sizing: content-box;
+	}
+	.scroller {
+		width: 3px;
+		height: 10px;
+		border-radius: 25%;
+		background-color: $primarycolor;
+		animation-name: scroll;
+		animation-duration: 2.2s;
+		animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+		animation-iteration-count: infinite;
+	}
+}
+
+.leaves {
+	position: fixed;
+	z-index: 100;
+	background-size: contain;
+
+	&.leaves--horizontal {
+		width: 100%;
+		height: 50px;
+		background-repeat: repeat-x;
+	}
+	&.leaves--vertical {
+		width: 50px;
+		height: 100vh;
+		background-repeat: repeat-y;
+	}
+	&.leaves--moved {
+		opacity: .5;
+	}
+	&.leaves--right {
+		right: 0;
+		top: 0;
+		background-image: url('../svg/leaves-right.svg');
+		background-position: center right;
+		transition: .7s;
+		&.leaves--moved {
+			right: -20px;
+		}
+	}
+	&.leaves--top {
+		left: 0;
+		top: 0;
+		background-image: url('../svg/leaves-top.svg');
+		background-position: top center;
+		transition: .7s;
+		&.leaves--moved {
+			top: -20px;
+		}
+	}
+	&.leaves--left {
+		left: 0;
+		top: 0;
+		background-image: url('../svg/leaves-left.svg');
+		background-position: center left;
+		transition: .7s;
+		&.leaves--moved {
+			left: -20px;
+		}
+	}
+	&.leaves--bottom-mobile {
+		left: 0;
+		bottom: -30px;
+		height: 100px;
+		background-image: url('../svg/leaves-bottom-large.svg');
+		background-position: bottom center;
+		transition: .7s;
+		@include bp800 {
+			display: none;
+		}
+		&.leaves--moved {
+			bottom: -50px;
+		}
+	}
+	&.leaves--bottom {
+		left: 0;
+		display: none;
+		bottom: -0;
+		background-image: url('../svg/leaves-bottom.svg');
+		background-position: bottom center;
+		transition: .7s;
+		@include bp800 {
+			display: block;
+		}
+		&.leaves--moved {
+			bottom: -20px;
+		}
+	}
+}
+
+	.leaf {
+		position: fixed;
+		z-index: 1000;
+		top: 0;
+		right: 0;
+		transition: .3s;
+		&.leaf--hide {
+			opacity: 0;
+		}
+    }
+
+    .leafContainer {
+	}
+
+// Define the leaves (top, right, bottom, left)
+$leafSettings :
+(1 16vh 2px auto auto one 4s)
+(2 23vh 6px auto auto two 6s)
+(3 33vh 1px auto auto two 3s)
+(4 51vh 15px auto auto one 7s)
+(5 71vh 3px auto auto two 8s)
+(6 82vh 15px auto auto two 3s)
+(7 12vh auto auto 22px one 4s)
+(8 22vh auto auto 3px two 3s)
+(9 29vh auto auto 0 one 5s)
+(10 43vh auto auto 10px two 3s)
+(11 65vh auto auto 14px two 4s)
+(12 80vh auto auto 0 one 6s)
+(13 10px auto auto 31% one 4s)
+(14 18px auto auto 45% one 6s)
+(15 9px auto auto 67% two 4s)
+(16 auto auto 3px 75% one 6s)
+(17 auto auto 2px 40% one 67s)
+(18 auto auto 1px 30% one 5s)
+;
+
+// Loop through colours above and create classes
+@each $leafOptions in $leafSettings {
+	.leaf-#{nth($leafOptions, 1)}{
+		top: nth($leafOptions, 2);
+		right: nth($leafOptions, 3);
+		bottom: nth($leafOptions, 4);
+		left: nth($leafOptions, 5);
+		-webkit-transform-origin: 50% 0; /* for Safari and older Chrome */
+		transform-origin: 50% 0;
+		-webkit-animation: swinging#{nth($leafOptions, 6)} nth($leafOptions, 7) ease-in-out forwards infinite;
+		animation: swinging#{nth($leafOptions, 6)} nth($leafOptions, 7) ease-in-out forwards infinite;
+	}
+}
+
+
+/* 
+header.site-header {
+	background: red;
+	text-align: center;
+	padding: 1em;
+	display: flex;
+	justify-content: center;
+	display: none;
+	height: 100vh;
+	img {
+		max-width: 130px;
+		padding: 0 1em;
+	}
+	.header-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+} */
+
+section {
+	p {
+	}
+	a {
+		color: $primarycolor;
+	}
+}
+
+section.hero {
+	background-image: url('../img/hero-mobile.jpg');
+	background-size: 100% auto;
+	background-position: top center;
+	background-repeat: no-repeat;
+	padding: 25em 3em 1em;
+	background-color: #000;
+	position: relative;
+	h1 {
+		color: lighten($primarycolor,20);
+		text-decoration: none;
+		line-height: 1em;
+	}
+
+	@include bp530 {
+		background-image: url('../img/hero-desktop.jpg');
+		background-size: contain;
+		background-position: -100px top;
+		padding: 3em;
+		display: flex;
+		.container {
+			margin: auto 0 auto auto;
+			width: 50%;
+		}
+	}
+
+	@include bp800 {
+		background-position: left top;
+	}
+	@include bp1200 {
+		min-height: 600px;
+	}
+}
+
+@include bp1200 {
+	.flexbox {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.grid4_12 {
+		width: 33.333%;
+	}
+	.grid6_12 {
+		width: 50%;
+	}
+	.grid12_12 {
+		width: 100%;
+	}
+}
+
+@keyframes scroll {
+  0% { opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0;}
+}
+
+section.main-copy, section.room-booking {
+	text-align: left;
+	background-image: url('../img/main-copy-bg.jpg');
+	background-size: cover;
+	padding: 1em 0;
+	background-position: center;
+	h1 {
+		font-size: 1.6rem;
+	}
+	p {
+		margin: 1em 0;
+	}
+	blockquote {
+		margin: 1em auto;
+		text-align: center;
+		font-style: italic;
+	}
+	.date-time {
+		padding: .5em 0;
+		border-bottom: 1px solid lighten($primarycolor,30);
+		margin: 0 0 .5em 0;
+	}
+	.content {
+		max-width: 800px;
+		margin: 2em auto;
+		background: $blanc;
+		position: relative;
+		padding: 2em 3em;
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 94%;
+			height: 1px;
+			left: 3%;
+			right: 0;
+			bottom: 0;
+			box-shadow: 0 5px 10px lighten($primarycolor,0);
+		}
+	}
+	@include bp480 {
+		.date-time {
+			display: inline-block;
+			width: 49%;
+			text-align: center;
+			margin: 0 auto;
+		}
+	}
+}
+
+.countdown {
+	display: flex;
+	flex-wrap: wrap;
+	span {
+		display: block;
+		text-align: center;
+		width: 25%;
+	}
+	.number {
+		font-size: 1.7rem;
+		font-family: 'GhostLight', serif;
+	}
+	.text {
+		text-transform: uppercase;
+		font-size: .8rem;
+	}
+}
+
+section.order-of-the-day {
+	background: lighten($babyblue,10);
+	color:darken($babyblue,40);
+	text-align: center;
+	.content {
+		padding: 2em 3em;
+		max-width: 800px;
+		margin: 2em auto;
+	}
+	h1 {
+		font-size: 1.6rem;
+	}
+	ul {
+		list-style: none;
+	}
+	li {
+		margin: .6em 0;		
+	}
+	span {
+		font-family: 'GhostLight', serif;
+		display: block;
+	}
+}
+
+section.vips {
+	background: $blanc;
+	.content {
+		padding: 2em 3em;
+		max-width: 800px;
+	}
+	h1 {
+		font-size: 1.6rem;
+	}
+	img {
+		width: 100%;
+		max-width: 180px;
+		height: auto;
+		border-radius: 50%;
+		display: block;
+		margin: 1em auto;
+	}
+	.person {
+		font-family: 'GhostLight', serif;
+		font-size: 1.8rem;
+		display: block;
+		text-align: center;
+	}
+}
+
+section.the-venue {
+	background-image: url('../img/bg-dayguests-large.jpg');
+	background-size: cover;
+	background-position: top center;
+}
+
+.footer-logo {
+	max-width: 200px;
+	padding: 4em 0 10em 0;
+	display: block;
+	opacity: .4;
+	margin: 0 auto;
+}
+
+@import 'animate';
